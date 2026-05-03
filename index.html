@@ -5,15 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Meelod</title>
   <meta name="description" content="Meelod — building a new venture and distributed systems.">
+  <link rel="canonical" href="https://meelod.github.io/">
   <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    if (window.location.pathname.endsWith("/index.html")) {
+      const cleanPath = window.location.pathname.slice(0, -10) || "/";
+      window.history.replaceState({}, "", cleanPath + window.location.search + window.location.hash);
+    }
+  </script>
 </head>
 <body>
   <div class="wrap">
     <header>
       <a class="name active" href="/">Meelod</a>
       <nav aria-label="Primary">
-        <a href="books.html">Books</a>
-        <a href="film.html">Film</a>
+        <a href="/books">Books</a>
+        <a href="/movies">Film</a>
       </nav>
     </header>
 
@@ -22,7 +29,7 @@
 
       <p>I'm from Northeast Philly and have lived in Northern Virginia and Los Angeles. I was a Jack Kent Cooke Scholar at Pomona College, where I studied computer science.</p>
 
-      <p class="links"><a href="mailto:meelod.waheed360@gmail.com">Email</a> <span>/</span> <a href="https://github.com/meelod">GitHub</a> <span>/</span> <a href="https://www.linkedin.com/in/meelod/">LinkedIn</a> <span>/</span> <a href="https://twitter.com/meelod_">X</a></p>
+      <p class="links"><a href="mailto:meelod.waheed360@gmail.com">Email</a> <span>/</span> <a href="https://github.com/meelod">GitHub</a> <span>/</span> <a href="https://www.linkedin.com/in/meelod/">LinkedIn</a></p>
     </main>
   </div>
 </body>
