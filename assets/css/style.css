@@ -50,13 +50,15 @@ header nav {
   gap: 26px;
 }
 
-header a {
+header a,
+header a:visited {
   color: #b3b3b3;
   text-decoration: none;
   letter-spacing: 0;
 }
 
-header a.active {
+header a.active,
+header a.active:visited {
   color: var(--ink);
 }
 
