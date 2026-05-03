@@ -1,10 +1,9 @@
 :root {
   --ink: #111;
   --muted: #8a8a8a;
-  --accent: #002FA7;
   --hover: #6f6f6f;
   --rule: #ececec;
-  --bg: #fdfdfd;
+  --bg: #fff;
 }
 
 * { box-sizing: border-box; }
@@ -47,9 +46,13 @@ header {
 header .name {
   font-size: 22px;
   font-weight: 600;
-  color: var(--ink);
+  color: var(--muted);
   text-decoration: none;
   letter-spacing: 0;
+}
+
+header .name.active {
+  color: var(--ink);
 }
 
 header nav {
@@ -61,12 +64,12 @@ header nav {
 }
 
 header nav a {
-  color: var(--ink);
+  color: var(--muted);
   text-decoration: none;
 }
 
 header nav a.active {
-  color: var(--accent);
+  color: var(--ink);
 }
 
 main {
@@ -78,19 +81,14 @@ p {
   max-width: 58ch;
 }
 
-h2 {
-  font-size: 13px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  margin: 56px 0 16px;
-}
-
 a {
-  color: var(--accent);
+  color: var(--ink);
   text-decoration: none;
   border-bottom: 1px solid transparent;
+}
+
+a:visited {
+  color: var(--ink);
 }
 
 a:hover {
@@ -153,14 +151,9 @@ a:hover {
   margin: 0 0 6px;
 }
 
-.favorites p {
-  margin: 0;
-  max-width: 62ch;
-}
-
 ::selection {
-  background: var(--accent);
-  color: #fff;
+  background: var(--rule);
+  color: var(--ink);
 }
 
 @media (max-width: 480px) {
@@ -169,5 +162,4 @@ a:hover {
     padding-bottom: 40px;
   }
   body { font-size: 17px; }
-  h2 { margin-top: 44px; }
 }
