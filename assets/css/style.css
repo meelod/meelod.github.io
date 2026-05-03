@@ -38,37 +38,25 @@ header {
   padding-top: 96px;
   padding-bottom: 52px;
   display: flex;
-  justify-content: space-between;
   align-items: baseline;
-  gap: 28px;
-}
-
-header .name {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--muted);
-  text-decoration: none;
-  letter-spacing: 0;
-}
-
-header .name.active {
-  color: var(--ink);
-}
-
-header nav {
-  display: flex;
   gap: 26px;
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
   font-size: 15px;
   font-weight: 600;
 }
 
-header nav a {
-  color: var(--muted);
-  text-decoration: none;
+header nav {
+  display: flex;
+  gap: 26px;
 }
 
-header nav a.active {
+header a {
+  color: #b3b3b3;
+  text-decoration: none;
+  letter-spacing: 0;
+}
+
+header a.active {
   color: var(--ink);
 }
 
