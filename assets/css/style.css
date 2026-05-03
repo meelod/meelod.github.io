@@ -21,7 +21,7 @@ html, body {
 
 body {
   font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.7;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
@@ -44,7 +44,7 @@ header {
 }
 
 header .name {
-  font-size: 22px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--muted);
   text-decoration: none;
@@ -93,6 +93,20 @@ a:visited {
 
 a:hover {
   color: var(--hover);
+  border-bottom-color: var(--hover);
+}
+
+main p:not(.links) a {
+  color: var(--hover);
+  border-bottom-color: #d9d9d9;
+}
+
+main p:not(.links) a:visited {
+  color: var(--hover);
+}
+
+main p:not(.links) a:hover {
+  color: var(--ink);
   border-bottom-color: var(--hover);
 }
 
@@ -161,5 +175,5 @@ a:hover {
     padding-top: 56px;
     padding-bottom: 40px;
   }
-  body { font-size: 17px; }
+  body { font-size: 15px; }
 }
