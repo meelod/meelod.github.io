@@ -160,9 +160,8 @@ main p:not(.links) a:hover {
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  column-count: 2;
+  column-gap: 12px;
   margin: 0 0 28px;
 }
 
@@ -170,12 +169,14 @@ main p:not(.links) a:hover {
   width: 100%;
   height: auto;
   display: block;
+  margin: 0 0 12px;
+  break-inside: avoid;
   background: var(--rule);
 }
 
 @media (max-width: 480px) {
   .grid {
-    grid-template-columns: 1fr;
+    column-count: 1;
   }
 }
 
