@@ -159,6 +159,26 @@ main p:not(.links) a:hover {
   margin: 0;
 }
 
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 0 0 28px;
+}
+
+.grid img {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: var(--rule);
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 ::selection {
   background: var(--rule);
   color: var(--ink);
