@@ -10,6 +10,7 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  scrollbar-gutter: stable;
 }
 
 html, body {
@@ -131,12 +132,6 @@ main p:not(.links) a:hover {
   list-style: none;
   padding: 0;
   margin: 0 0 28px;
-}
-
-/* Pages without a trailing .links element get equivalent bottom whitespace */
-main > .favorites:last-child,
-main > .grid:last-child {
-  margin-bottom: 86px;
 }
 
 .favorites li {
