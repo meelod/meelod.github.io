@@ -133,6 +133,12 @@ main p:not(.links) a:hover {
   margin: 0 0 28px;
 }
 
+/* Pages without a trailing .links element get equivalent bottom whitespace */
+main > .favorites:last-child,
+main > .grid:last-child {
+  margin-bottom: 86px;
+}
+
 .favorites li {
   margin: 0 0 18px;
   padding: 0 0 18px;
