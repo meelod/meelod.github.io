@@ -161,17 +161,18 @@ h2.section:first-of-type {
 .favorites li.has-thumb {
   display: flex;
   gap: 16px;
-  align-items: flex-start;
+  align-items: stretch;
 }
 
 .favorites .thumb {
-  flex: 0 0 auto;
+  flex: 0 0 96px;
+  display: flex;
   border-bottom: none;
 }
 
 .favorites .thumb img {
-  width: 64px;
-  height: 64px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   border-radius: 4px;
   background: var(--rule);
