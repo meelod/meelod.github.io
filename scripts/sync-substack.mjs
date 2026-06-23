@@ -148,10 +148,10 @@ async function main() {
 
   const lis = items.map((it) => {
     const desc = it.description ? truncate(clean(it.description)) : "";
-    const meta = [desc, it.date].filter(Boolean).join(" · ");
     const text = [
       `          <h2><a href="${clean(it.link)}">${clean(it.title)}</a></h2>`,
-      meta ? `          <p>${meta}</p>` : "",
+      desc ? `          <p>${desc}</p>` : "",
+      it.date ? `          <p class="post-date">${clean(it.date)}</p>` : "",
     ].filter(Boolean).join("\n");
     if (it.image) {
       return [

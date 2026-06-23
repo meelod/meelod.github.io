@@ -196,6 +196,13 @@ h2.section:first-of-type {
   margin: 0;
 }
 
+.favorites .post-date {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
 .grid {
   column-count: 2;
   column-gap: 12px;
