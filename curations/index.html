@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Curations - Meelod</title>
+  <meta name="description" content="Books, film, and art Meelod returns to.">
+  <link rel="canonical" href="https://meelodwaheed.com/curations">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Curations — Meelod">
+  <meta property="og:description" content="Books, film, and art Meelod returns to.">
+  <meta property="og:url" content="https://meelodwaheed.com/curations">
+  <meta property="og:image" content="https://meelodwaheed.com/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Curations — Meelod">
+  <meta name="twitter:description" content="Books, film, and art Meelod returns to.">
+  <meta name="twitter:image" content="https://meelodwaheed.com/og.png">
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="name" href="/">Meelod</a>
+      <nav aria-label="Primary">
+        <a class="active" href="/curations/">Curations</a>
+        <a href="/writing/">Writing</a>
+      </nav>
+    </header>
+
+    <main>
+      <p class="intro">Books, films, and art I keep returning to.</p>
+
+      <h2 class="section">Books</h2>
+      <ul class="favorites">
+        <li>
+          <h2>The Old Man and the Sea</h2>
+          <p>No one does more with less than Hemingway.</p>
+        </li>
+        <li>
+          <h2>The Brothers Karamazov</h2>
+          <p>Messy, intense, and full of arguments I still think about.</p>
+        </li>
+        <li>
+          <h2>The Alchemist</h2>
+          <p>A reminder to keep going.</p>
+        </li>
+        <li>
+          <h2>On Writing: A Memoir of the Craft</h2>
+          <p>Made me think more carefully about the craft of writing.</p>
+        </li>
+      </ul>
+
+      <h2 class="section">Film</h2>
+      <ul class="favorites">
+        <li>
+          <h2>12 Angry Men</h2>
+          <p>A masterclass in tension, dialogue, and conviction.</p>
+        </li>
+        <li>
+          <h2>The Iron Claw</h2>
+          <p>Quietly devastating. I haven't stopped thinking about it.</p>
+        </li>
+        <li>
+          <h2>About Time</h2>
+          <p>The whole film is in the second viewing of an ordinary day.</p>
+        </li>
+        <li>
+          <h2>Interstellar</h2>
+          <p>I just love space movies.</p>
+        </li>
+      </ul>
+
+      <h2 class="section">Art</h2>
+      <p class="intro">A small collection of things I've made.</p>
+      <div class="grid" id="art-grid" aria-live="polite">
+        <noscript>Enable JavaScript to view the gallery.</noscript>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (async function loadArt() {
+      const grid = document.getElementById("art-grid");
+      const exts = /\.(jpe?g|png|gif|webp|avif)$/i;
+      try {
+        const res = await fetch("https://api.github.com/repos/meelod/meelod.github.io/contents/curations/images");
+        if (!res.ok) throw new Error("API " + res.status);
+        const files = await res.json();
+        const images = files
+          .filter(f => f.type === "file" && exts.test(f.name))
+          .sort((a, b) => a.name.localeCompare(b.name));
+        grid.replaceChildren();
+        if (images.length === 0) {
+          const empty = document.createElement("p");
+          empty.textContent = "Nothing here yet.";
+          empty.style.color = "var(--muted)";
+          grid.appendChild(empty);
+          return;
+        }
+        for (const file of images) {
+          const img = document.createElement("img");
+          img.src = "/curations/images/" + encodeURIComponent(file.name);
+          img.alt = "";
+          img.loading = "lazy";
+          grid.appendChild(img);
+        }
+      } catch (err) {
+        grid.replaceChildren();
+        const msg = document.createElement("p");
+        msg.textContent = "Could not load gallery.";
+        msg.style.color = "var(--muted)";
+        grid.appendChild(msg);
+      }
+    })();
+  </script>
+</body>
+</html>

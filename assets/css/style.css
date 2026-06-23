@@ -128,6 +128,18 @@ main p:not(.links) a:hover {
   margin-bottom: 18px;
 }
 
+h2.section {
+  font-size: inherit;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--ink);
+  margin: 40px 0 16px;
+}
+
+h2.section:first-of-type {
+  margin-top: 8px;
+}
+
 .favorites {
   list-style: none;
   padding: 0;
