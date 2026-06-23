@@ -2,35 +2,43 @@
 // Fetches the latest Substack posts and writes them into writing/index.html
 // between the <!-- SUBSTACK:START --> and <!-- SUBSTACK:END --> markers.
 // No dependencies — uses Node's built-in fetch (Node 18+).
+//
+// Substack sits behind Cloudflare and returns 403 to datacenter IPs (e.g.
+// GitHub Actions runners), so we try the feed directly first and fall back
+// to the rss2json proxy, which fetches from its own (non-blocked) servers.
 
 import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
 const FEED_URL = "https://meelod.substack.com/feed";
+const PROXY_URL = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(FEED_URL)}`;
 const MAX_POSTS = 5;
+const MAX_DESC = 140;
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PAGE = join(__dirname, "..", "writing", "index.html");
 
 const START = "<!-- SUBSTACK:START -->";
 const END = "<!-- SUBSTACK:END -->";
 
+const BROWSER_HEADERS = {
+  "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36",
+  "Accept": "application/rss+xml, application/xml, text/xml, */*",
+  "Accept-Language": "en-US,en;q=0.9",
+};
+
 const stripCdata = (s) => s.replace(/^<!\[CDATA\[/, "").replace(/\]\]>$/, "").trim();
+const stripTags = (s) => s.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
 
-function pick(block, tag) {
-  const m = block.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`));
-  return m ? stripCdata(m[1]) : "";
-}
-
-// Decode the handful of entities Substack emits in titles/descriptions,
-// then re-escape for safe HTML insertion.
 function decode(s) {
   return s
     .replace(/&#8217;/g, "’").replace(/&#8216;/g, "‘")
     .replace(/&#8220;/g, "“").replace(/&#8221;/g, "”")
     .replace(/&#8230;/g, "…").replace(/&#8212;/g, "—")
-    .replace(/&#8211;/g, "–").replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"');
+    .replace(/&#8211;/g, "–").replace(/&#x27;/g, "’")
+    .replace(/&#39;/g, "’").replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&").replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">").replace(/&quot;/g, '"');
 }
 
 function escape(s) {
@@ -39,44 +47,82 @@ function escape(s) {
     .replace(/"/g, "&quot;");
 }
 
-const clean = (s) => escape(decode(s));
+const clean = (s) => escape(decode(stripTags(s)));
+
+function truncate(s) {
+  if (s.length <= MAX_DESC) return s;
+  return s.slice(0, MAX_DESC).replace(/\s+\S*$/, "") + "…";
+}
 
 function formatDate(pubDate) {
-  const d = new Date(pubDate);
+  // rss2json returns "YYYY-MM-DD HH:MM:SS" (UTC); RSS returns RFC-822.
+  const iso = /^\d{4}-\d{2}-\d{2} /.test(pubDate) ? pubDate.replace(" ", "T") + "Z" : pubDate;
+  const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return "";
   return d.toLocaleDateString("en-US", {
     year: "numeric", month: "long", day: "numeric", timeZone: "UTC",
   });
 }
 
+function parseXml(xml) {
+  const pick = (block, tag) => {
+    const m = block.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`));
+    return m ? stripCdata(m[1]) : "";
+  };
+  return [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)].map((m) => ({
+    title: pick(m[1], "title"),
+    link: pick(m[1], "link"),
+    description: pick(m[1], "description"),
+    date: formatDate(pick(m[1], "pubDate")),
+  }));
+}
+
+function parseJson(json) {
+  if (json.status !== "ok" || !Array.isArray(json.items)) return [];
+  return json.items.map((it) => ({
+    title: it.title || "",
+    link: it.link || "",
+    description: it.description || "",
+    date: formatDate(it.pubDate || ""),
+  }));
+}
+
+async function fetchItems() {
+  // 1) Try the feed directly (works locally and anywhere not IP-blocked).
+  try {
+    const res = await fetch(FEED_URL, { headers: BROWSER_HEADERS });
+    if (res.ok) {
+      const items = parseXml(await res.text());
+      if (items.length) {
+        console.log("Fetched feed directly.");
+        return items;
+      }
+    } else {
+      console.log(`Direct fetch returned HTTP ${res.status}; trying proxy.`);
+    }
+  } catch (err) {
+    console.log(`Direct fetch failed (${err.message}); trying proxy.`);
+  }
+
+  // 2) Fall back to the rss2json proxy.
+  const res = await fetch(PROXY_URL);
+  if (!res.ok) throw new Error(`Proxy fetch failed: HTTP ${res.status}`);
+  const items = parseJson(await res.json());
+  if (!items.length) throw new Error("Proxy returned no items.");
+  console.log("Fetched feed via rss2json proxy.");
+  return items;
+}
+
 async function main() {
-  const res = await fetch(FEED_URL, {
-    headers: {
-      "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36",
-      "Accept": "application/rss+xml, application/xml, text/xml, */*",
-      "Accept-Language": "en-US,en;q=0.9",
-    },
-  });
-  if (!res.ok) throw new Error(`Feed fetch failed: HTTP ${res.status}`);
-  const xml = await res.text();
+  const items = (await fetchItems())
+    .filter((it) => it.title && it.link)
+    .slice(0, MAX_POSTS);
 
-  const items = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)]
-    .map((m) => m[1])
-    .slice(0, MAX_POSTS)
-    .map((block) => ({
-      title: pick(block, "title"),
-      link: pick(block, "link"),
-      description: pick(block, "description"),
-      date: formatDate(pick(block, "pubDate")),
-    }))
-    .filter((it) => it.title && it.link);
-
-  if (items.length === 0) throw new Error("No items parsed from feed — aborting to avoid wiping the list.");
+  if (items.length === 0) throw new Error("No items parsed — aborting to avoid wiping the list.");
 
   const lis = items.map((it) => {
-    const meta = [it.description && clean(it.description), it.date]
-      .filter(Boolean)
-      .join(" · ");
+    const desc = it.description ? truncate(clean(it.description)) : "";
+    const meta = [desc, it.date].filter(Boolean).join(" · ");
     return [
       "        <li>",
       `          <h2><a href="${clean(it.link)}">${clean(it.title)}</a></h2>`,
