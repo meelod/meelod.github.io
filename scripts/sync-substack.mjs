@@ -64,27 +64,53 @@ function formatDate(pubDate) {
   });
 }
 
+// Substack reuses the publication avatar as the enclosure when a post has no
+// cover image. Pull the underlying source-image id so we can tell a real
+// per-post cover apart from the avatar and only show genuine covers.
+function imageId(url) {
+  if (!url) return "";
+  const m = url.match(/images%2F([0-9a-f-]+)/i) || url.match(/images\/([0-9a-f-]+)/i);
+  return m ? m[1] : "";
+}
+
+function coverImage(itemUrl, channelUrl) {
+  const id = imageId(itemUrl);
+  if (!id || id === imageId(channelUrl)) return ""; // missing or just the avatar
+  return itemUrl;
+}
+
 function parseXml(xml) {
   const pick = (block, tag) => {
     const m = block.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`));
     return m ? stripCdata(m[1]) : "";
   };
-  return [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)].map((m) => ({
-    title: pick(m[1], "title"),
-    link: pick(m[1], "link"),
-    description: pick(m[1], "description"),
-    date: formatDate(pick(m[1], "pubDate")),
-  }));
+  const chanImg = (xml.match(/<image>([\s\S]*?)<\/image>/) || [, ""])[1].match(/<url>([\s\S]*?)<\/url>/);
+  const channelUrl = chanImg ? stripCdata(chanImg[1]) : "";
+  return [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)].map((m) => {
+    const enc = m[1].match(/<enclosure[^>]*url="([^"]*)"/);
+    return {
+      title: pick(m[1], "title"),
+      link: pick(m[1], "link"),
+      description: pick(m[1], "description"),
+      date: formatDate(pick(m[1], "pubDate")),
+      image: coverImage(enc ? enc[1] : "", channelUrl),
+    };
+  });
 }
 
 function parseJson(json) {
   if (json.status !== "ok" || !Array.isArray(json.items)) return [];
-  return json.items.map((it) => ({
-    title: it.title || "",
-    link: it.link || "",
-    description: it.description || "",
-    date: formatDate(it.pubDate || ""),
-  }));
+  const channelUrl = (json.feed && json.feed.image) || "";
+  return json.items.map((it) => {
+    const itemUrl = it.thumbnail || (it.enclosure && it.enclosure.link) || "";
+    return {
+      title: it.title || "",
+      link: it.link || "",
+      description: it.description || "",
+      date: formatDate(it.pubDate || ""),
+      image: coverImage(itemUrl, channelUrl),
+    };
+  });
 }
 
 async function fetchItems() {
@@ -123,12 +149,25 @@ async function main() {
   const lis = items.map((it) => {
     const desc = it.description ? truncate(clean(it.description)) : "";
     const meta = [desc, it.date].filter(Boolean).join(" · ");
-    return [
-      "        <li>",
+    const text = [
       `          <h2><a href="${clean(it.link)}">${clean(it.title)}</a></h2>`,
       meta ? `          <p>${meta}</p>` : "",
-      "        </li>",
     ].filter(Boolean).join("\n");
+    if (it.image) {
+      return [
+        `        <li class="has-thumb">`,
+        `          <a class="thumb" href="${clean(it.link)}" aria-hidden="true" tabindex="-1"><img src="${clean(it.image)}" alt="" loading="lazy"></a>`,
+        `          <div class="post-text">`,
+        text,
+        `          </div>`,
+        "        </li>",
+      ].join("\n");
+    }
+    return [
+      "        <li>",
+      text,
+      "        </li>",
+    ].join("\n");
   }).join("\n");
 
   const list = `      <ul class="favorites">\n${lis}\n      </ul>`;

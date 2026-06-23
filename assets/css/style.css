@@ -158,6 +158,30 @@ h2.section:first-of-type {
   padding-bottom: 0;
 }
 
+.favorites li.has-thumb {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.favorites .thumb {
+  flex: 0 0 auto;
+  border-bottom: none;
+}
+
+.favorites .thumb img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 4px;
+  background: var(--rule);
+  display: block;
+}
+
+.favorites .post-text {
+  min-width: 0;
+}
+
 .favorites h2 {
   font-size: inherit;
   font-weight: 600;
