@@ -349,8 +349,9 @@ body:has(.photo-viewer[open]) { overflow: hidden; }
 
 a:focus-visible,
 button:focus-visible {
-  outline: 1px solid var(--muted);
-  outline-offset: 4px;
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 .skip-link {
