@@ -1,0 +1,645 @@
+[
+  {
+    "slug": "my-art",
+    "title": "My Art",
+    "description": "A few things I've made.",
+    "unit": "pieces",
+    "cover": "lake",
+    "items": [
+      {
+        "id": "lake",
+        "title": "Lake study",
+        "src": "/assets/images/art/lake.webp",
+        "thumb": "/assets/images/art/lake-480.webp",
+        "width": 960,
+        "height": 743,
+        "alt": "Colorful painting of a lake beneath a swirling sun and overhanging branches.",
+        "caption": "Lake study"
+      },
+      {
+        "id": "landscape",
+        "title": "Landscape study",
+        "src": "/assets/images/art/landscape.webp",
+        "thumb": "/assets/images/art/landscape-480.webp",
+        "width": 960,
+        "height": 740,
+        "alt": "Ink wash landscape of a lone tree in rolling hills.",
+        "caption": "Landscape study"
+      },
+      {
+        "id": "portrait",
+        "title": "Still life",
+        "src": "/assets/images/art/portrait.webp",
+        "thumb": "/assets/images/art/portrait-480.webp",
+        "width": 960,
+        "height": 1351,
+        "alt": "Still life drawing of a vessel on a chair beside a window.",
+        "caption": "Still life"
+      },
+      {
+        "id": "pot",
+        "title": "Kettle study",
+        "src": "/assets/images/art/pot.webp",
+        "thumb": "/assets/images/art/pot-480.webp",
+        "width": 960,
+        "height": 731,
+        "alt": "Ink wash study of a kettle with a curved handle.",
+        "caption": "Kettle study"
+      },
+      {
+        "id": "retreat",
+        "title": "Tree-lined path",
+        "src": "/assets/images/art/retreat.webp",
+        "thumb": "/assets/images/art/retreat-480.webp",
+        "width": 960,
+        "height": 1283,
+        "alt": "Charcoal drawing of a figure walking along a path between tall trees.",
+        "caption": "Tree-lined path"
+      },
+      {
+        "id": "shadow",
+        "title": "Light and shadow",
+        "src": "/assets/images/art/shadow.webp",
+        "thumb": "/assets/images/art/shadow-480.webp",
+        "width": 960,
+        "height": 711,
+        "alt": "Charcoal still life of a bottle casting a shadow across draped fabric.",
+        "caption": "Light and shadow"
+      }
+    ]
+  },
+  {
+    "slug": "art-pieces",
+    "title": "Art Pieces",
+    "description": "Paintings and sculpture I've stopped to look at.",
+    "unit": "photos",
+    "cover": "bedroom-in-arles-paris",
+    "items": [
+      {
+        "id": "portrait-los-angeles",
+        "title": "A painted portrait",
+        "src": "/assets/images/photography/portrait-los-angeles.webp",
+        "thumb": "/assets/images/photography/portrait-los-angeles-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "Photograph of a framed portrait painting in Los Angeles.",
+        "caption": "Los Angeles, California",
+        "place": "Los Angeles, California"
+      },
+      {
+        "id": "sunflowers-amsterdam",
+        "title": "Vincent van Gogh’s Sunflowers",
+        "src": "/assets/images/photography/sunflowers-amsterdam.webp",
+        "thumb": "/assets/images/photography/sunflowers-amsterdam-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "Photograph of Vincent van Gogh’s Sunflowers displayed on a quiet gallery wall at the Van Gogh Museum in Amsterdam.",
+        "caption": "Van Gogh Museum · Amsterdam, Netherlands",
+        "place": "Van Gogh Museum · Amsterdam, Netherlands"
+      },
+      {
+        "id": "writer-painting-versailles",
+        "title": "A writer at his desk",
+        "src": "/assets/images/photography/writer-painting-versailles.webp",
+        "thumb": "/assets/images/photography/writer-painting-versailles-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "Photograph of a framed painting of a writer at a desk surrounded by books, in Versailles.",
+        "caption": "Versailles, France",
+        "place": "Versailles, France"
+      },
+      {
+        "id": "portrait-paris",
+        "title": "A painted self-portrait",
+        "src": "/assets/images/photography/portrait-paris.webp",
+        "thumb": "/assets/images/photography/portrait-paris-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "Photograph of a framed painted portrait on a deep red museum wall in Paris.",
+        "caption": "Paris, France",
+        "place": "Paris, France"
+      },
+      {
+        "id": "pastoral-paintings-paris",
+        "title": "Pastoral paintings",
+        "src": "/assets/images/photography/pastoral-paintings-paris.webp",
+        "thumb": "/assets/images/photography/pastoral-paintings-paris-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "Two framed pastoral paintings displayed together at the Musée d’Orsay in Paris.",
+        "caption": "Musée d’Orsay · Paris, France",
+        "place": "Musée d’Orsay · Paris, France"
+      },
+      {
+        "id": "caravan-painting-paris",
+        "title": "A painted caravan",
+        "src": "/assets/images/photography/caravan-painting-paris.webp",
+        "thumb": "/assets/images/photography/caravan-painting-paris-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "Photograph of a framed painting of a camel caravan crossing a desert, at the Musée d’Orsay in Paris.",
+        "caption": "Musée d’Orsay · Paris, France",
+        "place": "Musée d’Orsay · Paris, France"
+      },
+      {
+        "id": "floor-painting-paris",
+        "title": "A painted interior",
+        "src": "/assets/images/photography/floor-painting-paris.webp",
+        "thumb": "/assets/images/photography/floor-painting-paris-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "Photograph of a painting of workers scraping a wooden floor, in a dark gallery at the Musée d’Orsay in Paris.",
+        "caption": "Musée d’Orsay · Paris, France",
+        "place": "Musée d’Orsay · Paris, France"
+      },
+      {
+        "id": "bedroom-in-arles-paris",
+        "title": "Vincent van Gogh’s Bedroom in Arles",
+        "src": "/assets/images/photography/bedroom-in-arles-paris.webp",
+        "thumb": "/assets/images/photography/bedroom-in-arles-paris-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "Photograph of Vincent van Gogh’s Bedroom in Arles in its gold frame at the Musée d’Orsay in Paris.",
+        "caption": "Musée d’Orsay · Paris, France",
+        "place": "Musée d’Orsay · Paris, France"
+      },
+      {
+        "id": "church-painting-paris",
+        "title": "A painted church",
+        "src": "/assets/images/photography/church-painting-paris.webp",
+        "thumb": "/assets/images/photography/church-painting-paris-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "Photograph of a brightly colored church painting displayed at the Musée d’Orsay in Paris.",
+        "caption": "Musée d’Orsay · Paris, France",
+        "place": "Musée d’Orsay · Paris, France"
+      },
+      {
+        "id": "monet-water-lilies-paris",
+        "title": "Claude Monet’s Water Lilies",
+        "src": "/assets/images/photography/monet-water-lilies-paris.webp",
+        "thumb": "/assets/images/photography/monet-water-lilies-paris-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "Photograph of Claude Monet’s Water Lilies following the curved gallery wall at the Musée de l’Orangerie in Paris.",
+        "caption": "Musée de l’Orangerie · Paris, France",
+        "place": "Musée de l’Orangerie · Paris, France"
+      },
+      {
+        "id": "portrait-orangerie-paris",
+        "title": "A portrait at the Orangerie",
+        "src": "/assets/images/photography/portrait-orangerie-paris.webp",
+        "thumb": "/assets/images/photography/portrait-orangerie-paris-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "Photograph of a framed painted portrait at the Musée de l’Orangerie in Paris.",
+        "caption": "Musée de l’Orangerie · Paris, France",
+        "place": "Musée de l’Orangerie · Paris, France"
+      },
+      {
+        "id": "marble-sculpture-paris",
+        "title": "A marble sculpture",
+        "src": "/assets/images/photography/marble-sculpture-paris.webp",
+        "thumb": "/assets/images/photography/marble-sculpture-paris-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "A classical marble sculpture beneath a coffered dome at the Louvre in Paris.",
+        "caption": "Louvre · Paris, France",
+        "place": "Louvre · Paris, France"
+      }
+    ]
+  },
+  {
+    "slug": "architecture",
+    "title": "Architecture",
+    "description": "Arches, ceilings, courtyards, and the spaces between them.",
+    "unit": "photos",
+    "cover": "louvre-ceiling-paris",
+    "items": [
+      {
+        "id": "palace-fine-arts-san-francisco",
+        "title": "Palace of Fine Arts",
+        "src": "/assets/images/photography/palace-fine-arts-san-francisco.webp",
+        "thumb": "/assets/images/photography/palace-fine-arts-san-francisco-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "The rotunda of the Palace of Fine Arts beside its lagoon in San Francisco.",
+        "caption": "San Francisco, California",
+        "place": "San Francisco, California"
+      },
+      {
+        "id": "stone-arch-monaco",
+        "title": "A stone arch in Monaco",
+        "src": "/assets/images/photography/stone-arch-monaco.webp",
+        "thumb": "/assets/images/photography/stone-arch-monaco-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "A stone arch spanning a narrow street beneath the old town in Monaco.",
+        "caption": "Monaco",
+        "place": "Monaco"
+      },
+      {
+        "id": "cathedral-genoa",
+        "title": "Cathedral details in Genoa",
+        "src": "/assets/images/photography/cathedral-genoa.webp",
+        "thumb": "/assets/images/photography/cathedral-genoa-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "A stone lion beneath the striped cathedral facade and neighboring shuttered buildings in Genoa.",
+        "caption": "Genoa, Italy",
+        "place": "Genoa, Italy"
+      },
+      {
+        "id": "galleria-milan",
+        "title": "A glass-roofed arcade in Milan",
+        "src": "/assets/images/photography/galleria-milan.webp",
+        "thumb": "/assets/images/photography/galleria-milan-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "A view upward through an ornate shopping arcade to its vaulted glass roof in Milan.",
+        "caption": "Milan, Italy",
+        "place": "Milan, Italy"
+      },
+      {
+        "id": "hotel-zaandam",
+        "title": "Stacked facades in Zaandam",
+        "src": "/assets/images/photography/hotel-zaandam.webp",
+        "thumb": "/assets/images/photography/hotel-zaandam-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "A hotel facade formed from stacked green traditional house fronts in Zaandam.",
+        "caption": "Zaandam, Netherlands",
+        "place": "Zaandam, Netherlands"
+      },
+      {
+        "id": "facade-antwerp",
+        "title": "A facade in Antwerp",
+        "src": "/assets/images/photography/facade-antwerp.webp",
+        "thumb": "/assets/images/photography/facade-antwerp-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "Carved stone details and stepped gables on a historic building in Antwerp.",
+        "caption": "Antwerp, Belgium",
+        "place": "Antwerp, Belgium"
+      },
+      {
+        "id": "temple-guangzhou",
+        "title": "A temple in Guangzhou",
+        "src": "/assets/images/photography/temple-guangzhou.webp",
+        "thumb": "/assets/images/photography/temple-guangzhou-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "Red temple balconies and sweeping roofs rising beside a large tree in Guangzhou.",
+        "caption": "Guangzhou, China",
+        "place": "Guangzhou, China"
+      },
+      {
+        "id": "palace-interior-seville",
+        "title": "A palace interior in Seville",
+        "src": "/assets/images/photography/palace-interior-seville.webp",
+        "thumb": "/assets/images/photography/palace-interior-seville-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "Carved walls and a wooden ceiling above visitors in a palace interior in Seville.",
+        "caption": "Seville, Spain",
+        "place": "Seville, Spain"
+      },
+      {
+        "id": "courtyard-seville",
+        "title": "A courtyard in Seville",
+        "src": "/assets/images/photography/courtyard-seville.webp",
+        "thumb": "/assets/images/photography/courtyard-seville-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "An ornate stone arch framing a quiet courtyard and reflecting pool in Seville.",
+        "caption": "Seville, Spain",
+        "place": "Seville, Spain"
+      },
+      {
+        "id": "yellow-courtyard-seville",
+        "title": "A yellow courtyard",
+        "src": "/assets/images/photography/yellow-courtyard-seville.webp",
+        "thumb": "/assets/images/photography/yellow-courtyard-seville-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "Yellow arches and white columns surrounding an empty tiled courtyard in Seville.",
+        "caption": "Seville, Spain",
+        "place": "Seville, Spain"
+      },
+      {
+        "id": "colonnade-versailles",
+        "title": "A colonnade in Versailles",
+        "src": "/assets/images/photography/colonnade-versailles.webp",
+        "thumb": "/assets/images/photography/colonnade-versailles-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "Visitors walking along a stone colonnade with a checkerboard floor in Versailles.",
+        "caption": "Versailles, France",
+        "place": "Versailles, France"
+      },
+      {
+        "id": "painted-vault-paris",
+        "title": "A painted vault",
+        "src": "/assets/images/photography/painted-vault-paris.webp",
+        "thumb": "/assets/images/photography/painted-vault-paris-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "A winged sculpture below a painted and ornamented vaulted ceiling in Paris.",
+        "caption": "Paris, France",
+        "place": "Paris, France"
+      },
+      {
+        "id": "louvre-ceiling-paris",
+        "title": "A painted ceiling at the Louvre",
+        "src": "/assets/images/photography/louvre-ceiling-paris.webp",
+        "thumb": "/assets/images/photography/louvre-ceiling-paris-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "Painted panels and gilded ornament along a vaulted gallery ceiling at the Louvre in Paris.",
+        "caption": "Louvre · Paris, France",
+        "place": "Louvre · Paris, France"
+      },
+      {
+        "id": "gilded-ceiling-paris",
+        "title": "A gilded ceiling",
+        "src": "/assets/images/photography/gilded-ceiling-paris.webp",
+        "thumb": "/assets/images/photography/gilded-ceiling-paris-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "Painted panels, white reliefs, and gilded ornament on a ceiling at the Louvre in Paris.",
+        "caption": "Louvre · Paris, France",
+        "place": "Louvre · Paris, France"
+      }
+    ]
+  },
+  {
+    "slug": "interiors",
+    "title": "Interiors",
+    "description": "Bookshops, cafés, and quiet corners.",
+    "unit": "photos",
+    "cover": "bookshop-the-hague",
+    "items": [
+      {
+        "id": "shop-naxos",
+        "title": "A small shop in Naxos",
+        "src": "/assets/images/photography/shop-naxos.webp",
+        "thumb": "/assets/images/photography/shop-naxos-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "Glass jars and bottles arranged on wooden shelves in a small shop in Naxos.",
+        "caption": "Naxos, Greece",
+        "place": "Naxos, Greece"
+      },
+      {
+        "id": "restaurant-san-diego",
+        "title": "A restaurant by the water",
+        "src": "/assets/images/photography/restaurant-san-diego.webp",
+        "thumb": "/assets/images/photography/restaurant-san-diego-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "A bright restaurant with wooden tables and an open view toward the waterfront in San Diego.",
+        "caption": "San Diego, California",
+        "place": "San Diego, California"
+      },
+      {
+        "id": "restaurant-genoa",
+        "title": "A quiet restaurant",
+        "src": "/assets/images/photography/restaurant-genoa.webp",
+        "thumb": "/assets/images/photography/restaurant-genoa-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "An empty restaurant with a vaulted ceiling, simple wooden tables, and shelves of wine in Genoa.",
+        "caption": "Genoa, Italy",
+        "place": "Genoa, Italy"
+      },
+      {
+        "id": "cafe-vienna",
+        "title": "Café Sperl",
+        "src": "/assets/images/photography/cafe-vienna.webp",
+        "thumb": "/assets/images/photography/cafe-vienna-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "The traditional interior of Café Sperl in Vienna, a filming location for Before Sunrise (1995).",
+        "caption": "Café Sperl · Vienna, Austria",
+        "place": "Café Sperl · Vienna, Austria",
+        "note": "Featured in Before Sunrise (1995)."
+      },
+      {
+        "id": "cafe-budapest",
+        "title": "New York Café",
+        "src": "/assets/images/photography/cafe-budapest.webp",
+        "thumb": "/assets/images/photography/cafe-budapest-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "The ornate interior of New York Café in Budapest, with gilded arches, mirrors, and visitors seated below.",
+        "caption": "New York Café · Budapest, Hungary",
+        "place": "New York Café · Budapest, Hungary"
+      },
+      {
+        "id": "bookshop-prague",
+        "title": "A bookshop in Prague",
+        "src": "/assets/images/photography/bookshop-prague.webp",
+        "thumb": "/assets/images/photography/bookshop-prague-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "Bookshelves lining a narrow bookshop in Prague.",
+        "caption": "Prague, Czechia",
+        "place": "Prague, Czechia"
+      },
+      {
+        "id": "cafe-prague",
+        "title": "A café in Prague",
+        "src": "/assets/images/photography/cafe-prague.webp",
+        "thumb": "/assets/images/photography/cafe-prague-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "An empty café corner in Prague with ochre walls, hanging plants, and small tables beside tall windows.",
+        "caption": "Prague, Czechia",
+        "place": "Prague, Czechia"
+      },
+      {
+        "id": "bookshop-the-hague",
+        "title": "A bookshop in The Hague",
+        "src": "/assets/images/photography/bookshop-the-hague.webp",
+        "thumb": "/assets/images/photography/bookshop-the-hague-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "An empty reading nook with wooden bookshelves, warm lamps, and red chairs in a bookshop in The Hague.",
+        "caption": "The Hague, Netherlands",
+        "place": "The Hague, Netherlands"
+      },
+      {
+        "id": "studio-giverny",
+        "title": "Monet’s House",
+        "src": "/assets/images/photography/studio-giverny.webp",
+        "thumb": "/assets/images/photography/studio-giverny-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "Paintings, wicker chairs, and patterned rugs inside Claude Monet’s house in Giverny, France.",
+        "caption": "Monet’s house · Giverny, France",
+        "place": "Claude Monet’s house and gardens · Giverny, France"
+      }
+    ]
+  },
+  {
+    "slug": "nature",
+    "title": "Nature & Landscapes",
+    "description": "Water, trees, and views along the way.",
+    "unit": "photos",
+    "cover": "river-yosemite",
+    "items": [
+      {
+        "id": "river-yosemite",
+        "title": "Reflections in Yosemite",
+        "src": "/assets/images/photography/river-yosemite.webp",
+        "thumb": "/assets/images/photography/river-yosemite-480.webp",
+        "width": 960,
+        "height": 1707,
+        "alt": "Forest and granite cliffs reflected in calm water in Yosemite National Park.",
+        "caption": "Yosemite National Park, California",
+        "place": "Yosemite National Park, California"
+      },
+      {
+        "id": "desert-joshua-tree",
+        "title": "A desert stay",
+        "src": "/assets/images/photography/desert-joshua-tree.webp",
+        "thumb": "/assets/images/photography/desert-joshua-tree-480.webp",
+        "width": 960,
+        "height": 723,
+        "alt": "Silver trailers and sparse desert plants beneath a wide blue sky near Joshua Tree.",
+        "caption": "Joshua Tree, California",
+        "place": "Joshua Tree, California"
+      },
+      {
+        "id": "cove-mallorca",
+        "title": "A cove in Mallorca",
+        "src": "/assets/images/photography/cove-mallorca.webp",
+        "thumb": "/assets/images/photography/cove-mallorca-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "A sailing boat resting in a blue cove below a wooded rocky coastline in Mallorca.",
+        "caption": "Mallorca, Spain",
+        "place": "Mallorca, Spain"
+      },
+      {
+        "id": "landscape-toledo",
+        "title": "A view over Toledo",
+        "src": "/assets/images/photography/landscape-toledo.webp",
+        "thumb": "/assets/images/photography/landscape-toledo-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "Trees, tiled rooftops, and distant hills under a clear sky in Toledo.",
+        "caption": "Toledo, Spain",
+        "place": "Toledo, Spain"
+      },
+      {
+        "id": "water-garden-giverny",
+        "title": "Monet’s Water Garden",
+        "src": "/assets/images/photography/water-garden-giverny.webp",
+        "thumb": "/assets/images/photography/water-garden-giverny-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "Water lilies, reflections, and willow trees in Claude Monet’s water garden in Giverny, France.",
+        "caption": "Monet’s water garden · Giverny, France",
+        "place": "Claude Monet’s house and gardens · Giverny, France"
+      }
+    ]
+  },
+  {
+    "slug": "streets-places",
+    "title": "Streets & Places",
+    "description": "Street scenes and small details from my travels.",
+    "unit": "photos",
+    "cover": "rooftops-cambridge",
+    "items": [
+      {
+        "id": "tennis-san-diego-bay",
+        "title": "Tennis courts by the bay",
+        "src": "/assets/images/photography/tennis-san-diego-bay.webp",
+        "thumb": "/assets/images/photography/tennis-san-diego-bay-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "Blue and green tennis courts beside a marina on San Diego Bay.",
+        "caption": "San Diego Bay, California",
+        "place": "San Diego Bay, California"
+      },
+      {
+        "id": "rooftops-cambridge",
+        "title": "Rooftops in Cambridge",
+        "src": "/assets/images/photography/rooftops-cambridge.webp",
+        "thumb": "/assets/images/photography/rooftops-cambridge-480.webp",
+        "width": 960,
+        "height": 1200,
+        "alt": "College buildings, rooftops, and lawns seen from above in Cambridge.",
+        "caption": "Cambridge, England",
+        "place": "Cambridge, England"
+      },
+      {
+        "id": "street-london",
+        "title": "A street in London",
+        "src": "/assets/images/photography/street-london.webp",
+        "thumb": "/assets/images/photography/street-london-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "A cobbled London street lined with shopfronts, hanging signs, and string lights.",
+        "caption": "London, England",
+        "place": "London, England"
+      },
+      {
+        "id": "street-amsterdam",
+        "title": "A street in Amsterdam",
+        "src": "/assets/images/photography/street-amsterdam.webp",
+        "thumb": "/assets/images/photography/street-amsterdam-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "Tall colorful facades, bicycles, and shopfronts along an Amsterdam street.",
+        "caption": "Amsterdam, Netherlands",
+        "place": "Amsterdam, Netherlands"
+      },
+      {
+        "id": "street-paris",
+        "title": "A street in Paris",
+        "src": "/assets/images/photography/street-paris.webp",
+        "thumb": "/assets/images/photography/street-paris-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "People walking along a narrow street between pale stone buildings in Paris.",
+        "caption": "Paris, France",
+        "place": "Paris, France"
+      },
+      {
+        "id": "street-guangzhou",
+        "title": "A street in Guangzhou",
+        "src": "/assets/images/photography/street-guangzhou.webp",
+        "thumb": "/assets/images/photography/street-guangzhou-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "Bicycles, buildings, and people along a narrow street in Guangzhou.",
+        "caption": "Guangzhou, China",
+        "place": "Guangzhou, China"
+      },
+      {
+        "id": "shopfront-guangzhou",
+        "title": "A shopfront in Guangzhou",
+        "src": "/assets/images/photography/shopfront-guangzhou.webp",
+        "thumb": "/assets/images/photography/shopfront-guangzhou-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "A red brick shopfront with a dark sign and pale stone trim in Guangzhou.",
+        "caption": "Guangzhou, China",
+        "place": "Guangzhou, China"
+      },
+      {
+        "id": "street-barcelona",
+        "title": "A street in Barcelona",
+        "src": "/assets/images/photography/street-barcelona.webp",
+        "thumb": "/assets/images/photography/street-barcelona-480.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "Trees, balconies, and a small street corner in Barcelona.",
+        "caption": "Barcelona, Spain",
+        "place": "Barcelona, Spain"
+      }
+    ]
+  }
+]

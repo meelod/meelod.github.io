@@ -2,6 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://meelodwaheed.com/</loc></url>
   <url><loc>https://meelodwaheed.com/projects/</loc></url>
-  <url><loc>https://meelodwaheed.com/curations/</loc></url>
   <url><loc>https://meelodwaheed.com/features/</loc></url>
+  <url><loc>https://meelodwaheed.com/curations/</loc></url>
+  <url><loc>https://meelodwaheed.com/curations/my-art/</loc></url>
+  <url><loc>https://meelodwaheed.com/curations/art-pieces/</loc></url>
+  <url><loc>https://meelodwaheed.com/curations/architecture/</loc></url>
+  <url><loc>https://meelodwaheed.com/curations/interiors/</loc></url>
+  <url><loc>https://meelodwaheed.com/curations/nature/</loc></url>
+  <url><loc>https://meelodwaheed.com/curations/streets-places/</loc></url>
 </urlset>

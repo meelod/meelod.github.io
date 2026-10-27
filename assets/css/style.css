@@ -198,19 +198,122 @@ h2.section:first-of-type {
   margin: 0;
 }
 
-.grid {
-  column-count: 2;
-  column-gap: 12px;
-  margin: 0 0 28px;
+/* One image-tile style for collection covers and photographs. */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px 18px;
+  list-style: none;
+  padding: 0;
+  margin: 28px 0 0;
 }
 
-.grid img {
+.image-grid li { min-width: 0; }
+.image-grid figure { margin: 0; }
+
+.image-grid a {
+  display: block;
+  border: 0;
+  color: inherit;
+}
+
+.image-grid img {
+  display: block;
   width: 100%;
   height: auto;
-  display: block;
-  margin: 0 0 12px;
-  break-inside: avoid;
+  aspect-ratio: 1;
+  object-fit: cover;
   background: var(--rule);
+}
+
+.tile-title {
+  margin: 10px 0 2px;
+  font: inherit;
+}
+
+.tile-meta,
+.image-grid figcaption {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font: inherit;
+}
+
+.photo-note {
+  display: block;
+  margin-top: 4px;
+}
+
+.image-grid a:hover .tile-title {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.image-grid a:hover img { opacity: 0.9; }
+.back-link { margin-bottom: 22px; }
+
+.photo-viewer {
+  width: min(960px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  padding: 20px;
+  border: 1px solid var(--rule);
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+}
+
+.photo-viewer::backdrop { background: rgb(17 17 17 / 45%); }
+
+.photo-viewer[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+body:has(.photo-viewer[open]) { overflow: hidden; }
+
+.viewer-header,
+.viewer-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.viewer-header { margin-bottom: 14px; }
+.viewer-header p,
+.viewer-controls p { margin: 0; }
+
+.viewer-image {
+  display: block;
+  width: 100%;
+  height: min(65dvh, 680px);
+  object-fit: contain;
+  min-height: 0;
+  flex-shrink: 1;
+}
+
+.viewer-caption {
+  margin: 14px 0 4px;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.viewer-controls { color: var(--muted); }
+
+.photo-viewer button {
+  min-height: 44px;
+  padding: 4px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  cursor: pointer;
+}
+
+.photo-viewer button:hover { color: var(--ink); }
+
+@media (max-width: 880px) {
+  .image-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 ::selection {
@@ -242,10 +345,10 @@ h2.section:first-of-type {
 @media (max-width: 480px) {
   .wrap { padding: 40px 22px 0; }
   body, header { font-size: 15px; }
-  .grid { column-count: 1; }
 }
 
-a:focus-visible {
+a:focus-visible,
+button:focus-visible {
   outline: 1px solid var(--muted);
   outline-offset: 4px;
 }
