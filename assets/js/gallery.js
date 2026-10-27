@@ -43,6 +43,21 @@
     const rect = viewer.getBoundingClientRect();
     if (event.target === viewer && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) viewer.close();
   });
+  // Swipe left/right to change photos; multi-finger touches (pinch-zoom) are ignored.
+  let swipe = null;
+  viewer.addEventListener("touchstart", ({ touches }) => {
+    swipe = touches.length === 1 ? { x: touches[0].clientX, y: touches[0].clientY } : null;
+  }, { passive: true });
+  viewer.addEventListener("touchmove", ({ touches }) => {
+    if (touches.length > 1) swipe = null;
+  }, { passive: true });
+  viewer.addEventListener("touchend", ({ changedTouches }) => {
+    if (!swipe) return;
+    const dx = changedTouches[0].clientX - swipe.x;
+    const dy = changedTouches[0].clientY - swipe.y;
+    swipe = null;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) show(current + (dx < 0 ? 1 : -1));
+  }, { passive: true });
   viewer.addEventListener("close", () => {
     opener?.focus();
   });
