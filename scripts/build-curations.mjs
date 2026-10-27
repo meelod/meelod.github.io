@@ -1,10 +1,37 @@
-import { readFile, writeFile, mkdir } from "node:fs/promises";
+import { readFile, writeFile, mkdir, access } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const base = "https://meelodwaheed.com";
 const collections = JSON.parse(await readFile(`${root}curations/collections.json`, "utf8"));
+
+// Stop the build on bad data instead of writing pages with broken images or blank text.
+const problems = [];
+const exists = (path) => access(root + path.replace(/^\//, "")).then(() => true, () => false);
+const blank = (value) => typeof value !== "string" || !value.trim();
+const slugs = new Set();
+for (const collection of collections) {
+  const name = collection.slug || collection.title || "(unnamed collection)";
+  for (const field of ["slug", "title", "description", "unit"]) if (blank(collection[field])) problems.push(`${name}: missing ${field}`);
+  if (slugs.has(collection.slug)) problems.push(`${name}: duplicate slug`);
+  slugs.add(collection.slug);
+  if (!Array.isArray(collection.items) || !collection.items.length) { problems.push(`${name}: no items`); continue; }
+  if (collection.cover && !collection.items.some((item) => item.id === collection.cover)) problems.push(`${name}: cover "${collection.cover}" is not one of its items`);
+  const ids = new Set();
+  for (const item of collection.items) {
+    const label = `${name} / ${item.id || "(no id)"}`;
+    for (const field of ["id", "title", "src", "thumb", "alt", "caption"]) if (blank(item[field])) problems.push(`${label}: missing ${field}`);
+    for (const field of ["width", "height"]) if (!(item[field] > 0)) problems.push(`${label}: ${field} must be a positive number`);
+    if (ids.has(item.id)) problems.push(`${label}: duplicate id`);
+    ids.add(item.id);
+    for (const field of ["src", "thumb"]) if (!blank(item[field]) && !(await exists(item[field]))) problems.push(`${label}: ${field} file not found (${item[field]})`);
+  }
+}
+if (problems.length) {
+  console.error(`collections.json has ${problems.length} problem(s):\n  ${problems.join("\n  ")}`);
+  process.exit(1);
+}
 const version = async (path) => createHash("sha256").update(await readFile(root + path)).digest("hex").slice(0, 12);
 const cssVersion = await version("assets/css/style.css");
 const jsVersion = await version("assets/js/gallery.js");
