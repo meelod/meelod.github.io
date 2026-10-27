@@ -30,24 +30,41 @@ body {
 }
 
 .wrap {
-  max-width: 620px;
+  max-width: 880px;
   margin: 0 auto;
-  padding: 0 28px;
+  padding: 96px 28px 0;
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: 72px;
 }
 
 header {
-  padding-top: 96px;
-  padding-bottom: 52px;
   display: flex;
-  align-items: baseline;
-  gap: 26px;
-  font-size: 17px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.identity {
+  margin: 0;
+  font-size: inherit;
+  font-weight: 600;
+  line-height: inherit;
+}
+
+header a.name,
+header a.name:visited {
+  color: var(--ink);
   font-weight: 600;
 }
 
 header nav {
   display: flex;
-  gap: 26px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
 }
 
 header a,
@@ -63,7 +80,14 @@ header a.active:visited {
 }
 
 main {
+  min-width: 0;
   padding-bottom: 96px;
+}
+
+.page-title {
+  margin: 0 0 24px;
+  font-size: inherit;
+  font-weight: 600;
 }
 
 p {
@@ -102,6 +126,11 @@ main p:not(.links) a:hover {
 
 .links {
   margin-top: 34px;
+  padding-top: 18px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
   font-family: inherit;
   font-size: inherit;
   font-weight: 400;
@@ -116,11 +145,6 @@ main p:not(.links) a:hover {
 
 .links a:hover {
   color: var(--hover);
-}
-
-.links span {
-  color: var(--rule);
-  margin: 0 6px;
 }
 
 .intro {
@@ -158,32 +182,7 @@ h2.section:first-of-type {
   padding-bottom: 0;
 }
 
-.favorites li.has-thumb {
-  display: flex;
-  gap: 16px;
-  align-items: stretch;
-}
-
-.favorites .thumb {
-  flex: 0 0 96px;
-  display: flex;
-  border-bottom: none;
-}
-
-.favorites .thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 4px;
-  background: var(--rule);
-  display: block;
-}
-
-.favorites .post-text {
-  min-width: 0;
-}
-
-.favorites h2 {
+.favorites h3 {
   font-size: inherit;
   font-weight: 600;
   letter-spacing: 0;
@@ -197,11 +196,13 @@ h2.section:first-of-type {
   margin: 0;
 }
 
-.favorites .post-date {
-  margin-top: 4px;
-  font-size: 13px;
-  color: var(--muted);
-  letter-spacing: 0.02em;
+.favorites.sites li {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+}
+
+.favorites.sites h3 {
+  margin-bottom: 2px;
 }
 
 .grid {
@@ -219,21 +220,52 @@ h2.section:first-of-type {
   background: var(--rule);
 }
 
-@media (max-width: 480px) {
-  .grid {
-    column-count: 1;
-  }
-}
-
 ::selection {
   background: var(--rule);
   color: var(--ink);
 }
 
-@media (max-width: 480px) {
-  header {
+@media (max-width: 720px) {
+  .wrap {
+    max-width: 620px;
     padding-top: 56px;
-    padding-bottom: 40px;
+    display: block;
   }
-  body { font-size: 15px; }
+
+  header {
+    padding-bottom: 28px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--rule);
+    gap: 16px;
+  }
+
+  header nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrap { padding: 40px 22px 0; }
+  body, header { font-size: 15px; }
+  .grid { column-count: 1; }
+}
+
+a:focus-visible {
+  outline: 1px solid var(--muted);
+  outline-offset: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  top: 12px;
+  left: 22px;
+  padding: 4px 8px;
+  background: var(--bg);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
 }
