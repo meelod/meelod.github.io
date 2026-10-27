@@ -182,7 +182,7 @@ h2.section:first-of-type {
   padding-bottom: 0;
 }
 
-.favorites h3 {
+.favorites :is(h2, h3) {
   font-size: inherit;
   font-weight: 600;
   letter-spacing: 0;
