@@ -1,0 +1,51 @@
+name: Build site
+
+# Reruns scripts/build-curations.mjs whenever its inputs change, so the
+# generated pages, sitemap, and CSS/JS version tags never go stale.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "curations/collections.json"
+      - "assets/css/style.css"
+      - "assets/js/gallery.js"
+      - "assets/images/**"
+      - "scripts/build-curations.mjs"
+      - "index.html"
+      - "404.html"
+      - "projects/index.html"
+      - "features/index.html"
+      - "writing/index.html"
+  workflow_dispatch:        # run manually from the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-site
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Build curation pages
+        run: node scripts/build-curations.mjs
+
+      - name: Commit changes if any
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "Rebuild generated pages"
+            git push
+          else
+            echo "Generated pages are already up to date."
+          fi
