@@ -57,12 +57,12 @@ function page({ title, description, path, data, content, viewer = false }) {
   <meta property="og:image" content="${base}/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Meelod Waheed — Forward deployed engineer">
+  <meta property="og:image:alt" content="Meelod Waheed — Software engineer">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${escape(title)}">
   <meta name="twitter:description" content="${escape(description)}">
   <meta name="twitter:image" content="${base}/og.png">
-  <meta name="twitter:image:alt" content="Meelod Waheed — Forward deployed engineer">
+  <meta name="twitter:image:alt" content="Meelod Waheed — Software engineer">
   <link rel="stylesheet" href="/assets/css/style.css?v=${cssVersion}">
   <script type="application/ld+json">${json(data)}</script>
 ${viewer ? `  <script src="/assets/js/gallery.js?v=${jsVersion}" defer></script>` : ""}
